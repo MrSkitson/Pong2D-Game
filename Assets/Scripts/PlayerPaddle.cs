@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerPaddle : Paddle
 {
-    private Vector2 direction;
+    private Vector2 direction { get; set; }
 
     private void Update()
     {
@@ -21,7 +21,7 @@ public class PlayerPaddle : Paddle
     {
         if (direction.sqrMagnitude != 0)
         {
-            _rigidbody.AddForce(direction * this.speed);
+            rigidbody.AddForce(direction * speed);
         }
     }
 

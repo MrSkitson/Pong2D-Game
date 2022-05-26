@@ -12,7 +12,7 @@ public class BouncSurface : MonoBehaviour
         if (ball != null)
         {
             Vector2 normal = collision.GetContact(0).normal;
-            ball.AddForce(-normal * this.bounceStrength);
+            ball.rigidbody.AddForce(-normal * bounceStrength, ForceMode2D.Impulse);
         }
     }
 }

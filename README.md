@@ -1,4 +1,5 @@
 # Ping-Pong
  
  This is the classic ping-pong game .
- You play between computer and system colculate score
+ You play vs computer and system colculate score.
+ Every time when Player or Computer collider ball, ball will be faster

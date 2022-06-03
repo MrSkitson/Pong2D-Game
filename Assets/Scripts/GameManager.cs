@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,16 +14,24 @@ public class GameManager : MonoBehaviour
     private int _computerScore { get; set; }    
     public Text computerScoreText;
 
+    bool _playerWon = false;
+
 
     private void Start()
     {
         NewGame();
+      
     }
 
     private void Update()
     {//Button "R" do restart game - start NewGame() method
         if (Input.GetKeyUp(KeyCode.R))
             NewGame();
+        if(_playerScore > 5) { 
+            _playerWon = true;
+            //setactive screen UI
+            //Button next Level
+        }
     }
 
 
@@ -32,10 +41,13 @@ public class GameManager : MonoBehaviour
         //SetPlayerScore(0);
        // SetComputerScore(0);
         StartRound();
+        _playerWon = false;
+       //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void StartRound()
     {
+        
         playerPaddle.ResetPosition();
         computerPaddle.ResetPosition();
         ball.ResetPosition();
@@ -68,6 +80,11 @@ public class GameManager : MonoBehaviour
     {
         _computerScore = score;
         computerScoreText.text = score.ToString();
+    }
+
+    private void StartNextLevel()
+    {
+        //Need to add code for button next level. Loadscene 
     }
    
 

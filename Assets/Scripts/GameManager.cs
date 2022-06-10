@@ -13,13 +13,15 @@ public class GameManager : MonoBehaviour
     public Paddle computerPaddle;
     private int _computerScore { get; set; }    
     public Text computerScoreText;
+    public Button startButton;
+
 
     bool _playerWon = false;
 
 
     private void Start()
     {
-        NewGame();
+        
       
     }
 
@@ -27,10 +29,12 @@ public class GameManager : MonoBehaviour
     {//Button "R" do restart game - start NewGame() method
         if (Input.GetKeyUp(KeyCode.R))
             NewGame();
-        if(_playerScore > 5) { 
-            _playerWon = true;
+        if(_playerScore >= 3) { 
+            _playerWon = true
+                ;
             //setactive screen UI
             //Button next Level
+            StartNextLevel();
         }
     }
 
@@ -39,10 +43,11 @@ public class GameManager : MonoBehaviour
     public void NewGame()
     {
         //SetPlayerScore(0);
-       // SetComputerScore(0);
-        StartRound();
+        // SetComputerScore(0);
+        startButton.gameObject.SetActive(false);
         _playerWon = false;
-       //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartRound();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void StartRound()
@@ -84,6 +89,9 @@ public class GameManager : MonoBehaviour
 
     private void StartNextLevel()
     {
+        if(_playerWon)
+            SceneManager.LoadScene("Pong2");
+        
         //Need to add code for button next level. Loadscene 
     }
    

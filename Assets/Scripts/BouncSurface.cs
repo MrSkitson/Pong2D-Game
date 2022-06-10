@@ -15,4 +15,5 @@ public class BouncSurface : MonoBehaviour
             ball.rigidbody.AddForce(-normal * bounceStrength, ForceMode2D.Impulse);
         }
     }
+
 }
